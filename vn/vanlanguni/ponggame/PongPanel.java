@@ -204,7 +204,8 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 		super.paintComponent(g);
 
 		if (showTitleScreen) {
-
+			playerOneScore=0;
+			playerTwoScore=0;
 			/* Show welcome screen */
 
 			// Draw game title and start message
