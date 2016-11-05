@@ -214,7 +214,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 
 			// FIXME Wellcome message below show smaller than game title
 			g.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
-			g.drawString("Press 'P' to play.", 175, 400);
+			g.drawString("Press 'P' to play.", 175, 300);
 		} else if (playing) {
 
 			/* Game is playing */
@@ -278,7 +278,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 
 	public void keyPressed(KeyEvent e) {
 		if (showTitleScreen) {
-			if (e.getKeyChar() == 'p') {
+			if (e.getKeyChar() == 'p'||e.getKeyChar() == 'P') {
 				showTitleScreen = false;
 				playing = true;
 			}
