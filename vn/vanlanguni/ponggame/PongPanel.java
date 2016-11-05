@@ -15,7 +15,7 @@
  *  
  *  Version: 0.5
  */
-package vn.vanlanguni.ponggame;
+package teamass4;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -266,6 +266,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 
 			// Draw Restart message
 			g.setFont(new Font(Font.DIALOG, Font.BOLD, 18));
+			g.drawString("Press 'SPACE' to restart game.", 175, 400);
 			// TODO Draw a restart message
 		}
 	}
