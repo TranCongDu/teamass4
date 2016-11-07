@@ -215,7 +215,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 
 			// FIXME Wellcome message below show smaller than game title
 
-			g.drawString("Press 'P' to play.", 150, 400);
+			g.drawString("Press 'P' to play.", 110, 400);
 
 			g.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
 			
