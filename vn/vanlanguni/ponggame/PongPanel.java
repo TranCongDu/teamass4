@@ -128,8 +128,8 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			int nextBallLeft = ballX + ballDeltaX;
 			int nextBallRight = ballX + diameter + ballDeltaX;
 			// FIXME Something not quite right here
-			int nextBallTop = ballY;
-			int nextBallBottom = ballY + diameter;
+			int nextBallTop = ballY + ballDeltaY;
+			int nextBallBottom = ballY + diameter + ballDeltaY;
 
 			// Player 1's paddle position
 			int playerOneRight = playerOneX + playerOneWidth;
@@ -204,7 +204,8 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 		super.paintComponent(g);
 
 		if (showTitleScreen) {
-
+			playerOneScore=0;
+			playerTwoScore=0;
 			/* Show welcome screen */
 
 			// Draw game title and start message
@@ -212,7 +213,12 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			g.drawString("Pong Game", 150, 100);
 
 			// FIXME Wellcome message below show smaller than game title
+<<<<<<< HEAD
 			g.drawString("Press 'P' to play.", 110, 400);
+=======
+			g.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
+			g.drawString("Press 'P' to play.", 175, 300);
+>>>>>>> aaf791431a97e101dc7fe25c8884b8cb0267cda6
 		} else if (playing) {
 
 			/* Game is playing */
@@ -278,7 +284,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 
 	public void keyPressed(KeyEvent e) {
 		if (showTitleScreen) {
-			if (e.getKeyChar() == 'p') {
+			if (e.getKeyChar() == 'p'||e.getKeyChar() == 'P') {
 				showTitleScreen = false;
 				playing = true;
 			}
