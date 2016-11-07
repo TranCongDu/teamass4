@@ -63,7 +63,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	private int playerOneHeight = 50;
 
 	/** Player 2's paddle: position and size */
-	private int playerTwoX = 465;
+	private int playerTwoX = 475;
 	private int playerTwoY = 250;
 	private int playerTwoWidth = 10;
 	private int playerTwoHeight = 50;
@@ -128,8 +128,8 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			int nextBallLeft = ballX + ballDeltaX;
 			int nextBallRight = ballX + diameter + ballDeltaX;
 			// FIXME Something not quite right here
-			int nextBallTop = ballY;
-			int nextBallBottom = ballY + diameter;
+			int nextBallTop = ballY + ballDeltaY;
+			int nextBallBottom = ballY + diameter + ballDeltaY;
 
 			// Player 1's paddle position
 			int playerOneRight = playerOneX + playerOneWidth;
