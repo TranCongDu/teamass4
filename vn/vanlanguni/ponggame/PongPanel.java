@@ -232,7 +232,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			for (int lineY = 0; lineY < getHeight(); lineY += 50) {
 				g.drawLine(250, lineY, 250, lineY + 25);
 
-				g.setColor(Color.Green);
+				g.setColor(Color.GREEN);
 			}
 
 			// draw "goal lines" on each side
