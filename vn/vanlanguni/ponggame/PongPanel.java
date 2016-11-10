@@ -74,7 +74,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	/** Player score, show on upper left and right. */
 	private int playerOneScore;
 	private int playerTwoScore;
-
+	ImageIcon background = new ImageIcon("images/a.jpg");
 	/** Construct a PongPanel. */
 	public PongPanel() {
 		setBackground(backgroundColor);
@@ -221,7 +221,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			
 
 		} else if (playing) {
-
+			g.drawImage(background.getImage(), 0, 0, 500, 500, null);
 			/* Game is playing */
 
 			// set the coordinate limit
