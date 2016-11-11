@@ -20,6 +20,7 @@ public class MainGameUI extends JFrame{
 	private static final int _WIDTH = 500;
 	private PongPanel pongPanel;
 	
+	//Implement paddle image
 	public MainGameUI(){
 		setPreferredSize(new Dimension(_WIDTH, _HEIGHT));
 		setLayout(new BorderLayout());
