@@ -75,7 +75,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	/** Player score, show on upper left and right. */
 	private int playerOneScore;
 	private int playerTwoScore;
-	ImageIcon background = new ImageIcon("image/a.jpg");
+	ImageIcon background = new ImageIcon("image/aa.jpg");
 	ImageIcon manhinhbatdau = new ImageIcon("image/b.jpg");
 	/** Construct a PongPanel. */
 	public PongPanel() {
@@ -211,7 +211,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			/* Show welcome screen */
 
 			// Draw game title and start message
-			g.drawImage(background.getImage(), 0, 0, 500, 500, null);
+			g.drawImage(manhinhbatdau.getImage(), 0, 0, 500, 500, null);
 			g.setColor(Color.white);
 			g.setFont(new Font(Font.DIALOG, Font.BOLD, 36));
 			g.drawString("Pong Game", 150, 100);
