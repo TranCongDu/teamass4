@@ -75,8 +75,8 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	/** Player score, show on upper left and right. */
 	private int playerOneScore;
 	private int playerTwoScore;
-	ImageIcon background = new ImageIcon("images/a.jpg");
-	ImageIcon manhinhbatdau = new ImageIcon("images/b.jpg");
+	ImageIcon background = new ImageIcon("image/a.jpg");
+	ImageIcon manhinhbatdau = new ImageIcon("image/b.jpg");
 	/** Construct a PongPanel. */
 	public PongPanel() {
 		setBackground(backgroundColor);
