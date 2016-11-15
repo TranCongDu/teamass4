@@ -85,7 +85,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 
 	ImageIcon background = new ImageIcon("image/a.jpg");
 	ImageIcon manhinhbatdau = new ImageIcon("image/b.jpg");
-	ImageIcon manhinhnhapten = new ImageIcon("image/a.jpg");
+	
 
 	/** Construct a PongPanel. */
 	public PongPanel() {
@@ -96,7 +96,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 		addKeyListener(this);
 
 		// call step() 60 fps
-		Timer timer = new Timer(1000 / 60, this);
+		Timer timer = new Timer(1000 / 100, this);
 		timer.start();
 	}
 
@@ -219,7 +219,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			playerOneScore = 0;
 			playerTwoScore = 0;
 			/* Show welcome screen */
-			g.drawImage(manhinhnhapten.getImage(), 0, 0, 500, 500, null);
+		
 			// Draw game title and start message
 			g.drawImage(manhinhbatdau.getImage(), 0, 0, 500, 500, null);
 			g.setColor(Color.YELLOW);
