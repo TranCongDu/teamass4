@@ -114,22 +114,22 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 
 			// move player 1
 			// Move up if after moving, paddle is not outside the screen
-			if (upPressed && playerOneY - paddleSpeed > 0) {
-				playerOneY -= paddleSpeed;
+			if (upPressed && playerTwoY - paddleSpeed > 0) {
+				playerTwoY -= paddleSpeed;
 			}
 			// Move down if after moving paddle is not outside the screen
-			if (downPressed && playerOneY + playerOneHeight + paddleSpeed < getHeight()) {
-				playerOneY += paddleSpeed;
+			if (downPressed && playerTwoY + playerTwoHeight + paddleSpeed < getHeight()) {
+				playerTwoY += paddleSpeed;
 			}
 
 			// move player 2
 			// Move up if after moving paddle is not outside the screen
-			if (wPressed && playerTwoY - paddleSpeed > 0) {
-				playerTwoY -= paddleSpeed;
+			if (wPressed && playerOneY - paddleSpeed > 0) {
+				playerOneY -= paddleSpeed;
 			}
 			// Move down if after moving paddle is not outside the screen
-			if (sPressed && playerTwoY + playerTwoHeight + paddleSpeed < getHeight()) {
-				playerTwoY += paddleSpeed;
+			if (sPressed && playerOneY + playerOneHeight + paddleSpeed < getHeight()) {
+				playerOneY += paddleSpeed;
 			}
 
 			/*
@@ -223,12 +223,12 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			// Draw game title and start message
 			g.drawImage(manhinhbatdau.getImage(), 0, 0, 500, 500, null);
 			g.setColor(Color.YELLOW);
-			g.setFont(new Font(Font.DIALOG, Font.BOLD, 36));
-			g.drawString("Pong Game", 150, 50);
+			g.setFont(new Font(Font.DIALOG, Font.BOLD, 45));
+			g.drawString("Pong Game", 30, 400);
 
 			// FIXME Wellcome message below show smaller than game title
-
-			g.drawString("Press 'P' to play.", 110, 400);
+			g.setFont(new Font(Font.DIALOG, Font.BOLD, 25));
+			g.drawString("Press 'P' to play.", 40, 480);
 
 			g.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
 
@@ -284,16 +284,16 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			g.setFont(new Font(Font.DIALOG, Font.BOLD, 36));
 			if (playerOneScore > playerTwoScore) {
 				g.setColor(Color.BLUE);
-				g.drawString(namePlayer1 + " win", 150, 200);
+				g.drawString(namePlayer1 + " win", 200, 200);
 			} else {
 				g.setColor(Color.BLUE);
-				g.drawString(namePlayer2 + " win", 150, 200);
+				g.drawString(namePlayer2 + " win", 200, 200);
 			}
 
 			// Draw Restart message
 			g.setFont(new Font(Font.DIALOG, Font.BOLD, 18));
 			g.setColor(Color.YELLOW);
-			g.drawString("Press 'SPACE' to restart game.", 110, 400);
+			g.drawString("Press 'SPACE' to restart game.", 180, 280);
 			// TODO Draw a restart message
 		}
 	}
