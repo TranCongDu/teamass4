@@ -85,7 +85,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 
 	ImageIcon background = new ImageIcon("image/a.jpg");
 	ImageIcon manhinhbatdau = new ImageIcon("image/b.jpg");
-	
+	ImageIcon gameover = new ImageIcon("image/c.jpg");
 
 	/** Construct a PongPanel. */
 	public PongPanel() {
@@ -272,7 +272,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 		} else if (gameOver) {
 
 			/* Show End game screen with winner name and score */
-
+			g.drawImage(gameover.getImage(), 0, 0, 500, 500, null);
 			// Draw scores
 			// TODO Set Blue color
 			g.setFont(new Font(Font.DIALOG, Font.BOLD, 36));
