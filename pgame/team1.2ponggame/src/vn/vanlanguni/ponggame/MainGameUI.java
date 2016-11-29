@@ -43,7 +43,7 @@ public class MainGameUI extends JFrame {
 		// setSize(_WIDTH, _HEIGHT);
 		setTitle("Pong Game - K21T Ltd.");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-
+		setLocationRelativeTo(null);
 		pongPanel = new PongPanel();
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLayout(null);
