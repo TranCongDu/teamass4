@@ -93,7 +93,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	/** Construct a PongPanel. */
 	public PongPanel() {
 		setBackground(backgroundColor);
-
+		Sound.play("Sounds/StartGame.wav");
 		// listen to key presses
 		setFocusable(true);
 		addKeyListener(this);
@@ -172,7 +172,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 					if (playerTwoScore == 3) {
 						playing = false;
 						gameOver = true;
-Sound.play("Sounds/gameOver.wav");
+						Sound.play("Sounds/gameOver.wav");
 					}
 					ballX = 250;
 					ballY = 250;
@@ -217,7 +217,7 @@ Sound.play("Sounds/gameOver.wav");
 					// If the ball hitting the paddle, it will bounce back
 					// FIXME Something wrong here
 					ballDeltaX *= -1;
-Sound.play("Sounds/hit.wav");
+					Sound.play("Sounds/hit.wav");
 				
 				}
 			}
@@ -278,7 +278,7 @@ Sound.play("Sounds/gameOver.wav");
 					// If the ball hitting the paddle, it will bounce back
 					// FIXME Something wrong here
 					ballDeltaX *= -1;
-Sound.play("Sounds/hit.wav");
+					Sound.play("Sounds/hit.wav");
 				}
 			}
 
@@ -316,6 +316,7 @@ Sound.play("Sounds/hit.wav");
 			g.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
 
 		} else if (playing) {
+			
 			g.drawImage(background.getImage(), 0, 0, 500, 500, null);
 			/* Game is playing */
 
@@ -331,18 +332,19 @@ Sound.play("Sounds/hit.wav");
 			}
 
 			// draw "goal lines" on each side
-			g.setColor(Color.green);
+			g.setColor(Color.GREEN);
 			g.drawLine(playerOneRight, 0, playerOneRight, getHeight());
 			g.drawLine(playerTwoLeft, 0, playerTwoLeft, getHeight());
 
 			// draw the scores
-			g.setColor(Color.blue);
-			g.setFont(new Font(Font.DIALOG, Font.BOLD, 36));
+			g.setColor(Color.BLUE);
+			g.setFont(new Font(Font.DIALOG, Font.ITALIC, 36));
 			g.drawString(String.valueOf(playerOneScore), 100, 100); // Player 1
-			g.setColor(Color.BLUE);
+			g.setColor(Color.GREEN);
 			g.drawString(namePlayer1, 50, 50); // score
-			g.drawString(String.valueOf(playerTwoScore), 400, 100); // Player 2
 			g.setColor(Color.BLUE);
+			g.drawString(String.valueOf(playerTwoScore), 400, 100); // Player 2
+			g.setColor(Color.GREEN);
 			g.drawString(namePlayer2, 350, 50); // score
 
 	//		g.drawString(String.valueOf(ballDeltaY), 100, 400); // Player 1
