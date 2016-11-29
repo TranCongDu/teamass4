@@ -41,7 +41,10 @@ import javax.swing.Timer;
 public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	String namePlayer1;
 	String namePlayer2;
-
+	private static int kc=0;
+	private static int hieu=0;
+	private static int kc2=0;
+	private static int hieu2=0;
 	private static final long serialVersionUID = -1097341635155021546L;
 
 	boolean showTitleScreen = true;
@@ -68,13 +71,13 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	private int playerOneX = 0;
 	private int playerOneY = 250;
 	private int playerOneWidth = 10;
-	private int playerOneHeight = 50;
+	private int playerOneHeight = 100;
 
 	/** Player 2's paddle: position and size */
 	private int playerTwoX = 475;
 	private int playerTwoY = 250;
 	private int playerTwoWidth = 10;
-	private int playerTwoHeight = 50;
+	private int playerTwoHeight = 100;
 
 	/** Speed of the paddle - How fast the paddle move. */
 	private int paddleSpeed = 5;
@@ -96,7 +99,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 		addKeyListener(this);
 
 		// call step() 60 fps
-		Timer timer = new Timer(1000 / 100, this);
+		Timer timer = new Timer(1000 / 60, this);
 		timer.start();
 	}
 
@@ -157,25 +160,63 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			if (nextBallTop < 0 || nextBallBottom > getHeight()) {
 				ballDeltaY *= -1;
 			}
-
+			kc = playerOneHeight/5;
 			// will the ball go off the left side?
 			if (nextBallLeft < playerOneRight) {
 				// is it going to miss the paddle?
 				if (nextBallTop > playerOneBottom || nextBallBottom < playerOneTop) {
 
 					playerTwoScore++;
-
+					ballDeltaY = 3;
 					// Player 2 Win, restart the game
-					if (playerTwoScore == 3) {
+					if (playerTwoScore == 30) {
 						playing = false;
 						gameOver = true;
 					}
 					ballX = 250;
 					ballY = 250;
 				} else {
+					//cham vao cho khac nhau thi bong se di theo huong khac
+					
+					hieu = nextBallTop+(diameter/2);
+					if(ballDeltaY > 0){
+
+							if ((hieu > playerOneTop)&&( hieu <= (playerOneTop+(kc))) || (hieu > (playerOneTop+(kc*4)) && (hieu <playerOneBottom))){
+								ballDeltaY = 5;
+							}
+							
+							if(((hieu > (playerOneTop+(kc))) && (hieu  < (playerOneTop+(kc*2))))
+									||
+								((hieu > (playerOneTop+(kc*3))) && (hieu  < (playerOneTop+(kc*4))))){
+								ballDeltaY = 4;
+							}
+							if(((hieu > (playerOneTop+(kc*2))) && (hieu  < (playerOneTop+(kc*3))))){
+								ballDeltaY = 3;
+							}
+							
+						
+						
+					}
+						else{
+
+							if ((hieu > playerOneTop)&&( hieu <= (playerOneTop+(kc))) || (hieu > (playerOneTop+(kc*4)) && (hieu <playerOneBottom))){
+								ballDeltaY = -5;
+							}
+							
+							if(((hieu > (playerOneTop+(kc))) && (hieu  < (playerOneTop+(kc*2))))
+									||
+								((hieu > (playerOneTop+(kc*3))) && (hieu  < (playerOneTop+(kc*4))))){
+								ballDeltaY = -4;
+							}
+							if(((hieu > (playerOneTop+(kc*2))) && (hieu  < (playerOneTop+(kc*3))))){
+								ballDeltaY = -3;
+							}
+							
+					}
 					// If the ball hitting the paddle, it will bounce back
 					// FIXME Something wrong here
 					ballDeltaX *= -1;
+				
 				}
 			}
 
@@ -185,16 +226,52 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 				if (nextBallTop > playerTwoBottom || nextBallBottom < playerTwoTop) {
 
 					playerOneScore++;
-
+					ballDeltaY = 3;
 					// Player 1 Win, restart the game
-					if (playerOneScore == 3) {
+					if (playerOneScore == 30) {
 						playing = false;
 						gameOver = true;
 					}
 					ballX = 250;
 					ballY = 250;
 				} else {
+					//cham vao banh se bat lai khac
+					kc2 = playerTwoHeight/5;
+					hieu = nextBallTop+(diameter/2);
+					if(ballDeltaY > 0){
 
+							if ((hieu > playerTwoTop)&&( hieu <= (playerTwoTop+(kc2))) || (hieu > (playerTwoTop+(kc2*4)) && (hieu <playerOneBottom))){
+								ballDeltaY = 5;
+							}
+							
+							if(((hieu > (playerTwoTop+(kc2))) && (hieu  < (playerTwoTop+(kc2*2))))
+									||
+								((hieu > (playerTwoTop+(kc2*3))) && (hieu  < (playerTwoTop+(kc2*4))))){
+								ballDeltaY = 4;
+							}
+							if(((hieu > (playerTwoTop+(kc2*2))) && (hieu  < (playerTwoTop+(kc2*3))))){
+								ballDeltaY = 3;
+							}
+							
+						
+						
+					}
+						else{
+
+							if ((hieu > playerTwoTop)&&( hieu <= (playerTwoTop+(kc2))) || (hieu > (playerTwoTop+(kc2*4)) && (hieu <playerOneBottom))){
+								ballDeltaY = -5;
+							}
+							
+							if(((hieu > (playerTwoTop+(kc2))) && (hieu  < (playerTwoTop+(kc2*2))))
+									||
+								((hieu > (playerTwoTop+(kc2*3))) && (hieu  < (playerTwoTop+(kc2*4))))){
+								ballDeltaY = -4;
+							}
+							if(((hieu > (playerTwoTop+(kc2*2))) && (hieu  < (playerTwoTop+(kc2*3))))){
+								ballDeltaY = -3;
+							}
+							
+					}
 					// If the ball hitting the paddle, it will bounce back
 					// FIXME Something wrong here
 					ballDeltaX *= -1;
@@ -204,6 +281,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			// move the ball
 			ballX += ballDeltaX;
 			ballY += ballDeltaY;
+			
 		}
 
 		// stuff has moved, tell this JPanel to repaint itself
@@ -218,6 +296,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 		if (showTitleScreen) {
 			playerOneScore = 0;
 			playerTwoScore = 0;
+			ballDeltaY = 3;
 			/* Show welcome screen */
 		
 			// Draw game title and start message
@@ -262,6 +341,9 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			g.setColor(Color.BLUE);
 			g.drawString(namePlayer2, 350, 50); // score
 
+	//		g.drawString(String.valueOf(ballDeltaY), 100, 400); // Player 1
+		
+			
 			// draw the ball
 			g.setColor(Color.RED);
 			g.fillOval(ballX, ballY, diameter, diameter);
@@ -295,6 +377,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			g.setColor(Color.YELLOW);
 			g.drawString("Press 'SPACE' to restart game.", 180, 280);
 			// TODO Draw a restart message
+			
 		}
 	}
 
