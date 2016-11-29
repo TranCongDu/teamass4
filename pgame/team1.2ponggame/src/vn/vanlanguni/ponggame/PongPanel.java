@@ -172,6 +172,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 					if (playerTwoScore == 3) {
 						playing = false;
 						gameOver = true;
+Sound.play("Sounds/gameOver.wav");
 					}
 					ballX = 250;
 					ballY = 250;
@@ -216,6 +217,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 					// If the ball hitting the paddle, it will bounce back
 					// FIXME Something wrong here
 					ballDeltaX *= -1;
+Sound.play("Sounds/hit.wav");
 				
 				}
 			}
@@ -231,6 +233,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 					if (playerOneScore == 3) {
 						playing = false;
 						gameOver = true;
+Sound.play("Sounds/gameOver.wav");
 					}
 					ballX = 250;
 					ballY = 250;
@@ -275,6 +278,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 					// If the ball hitting the paddle, it will bounce back
 					// FIXME Something wrong here
 					ballDeltaX *= -1;
+Sound.play("Sounds/hit.wav");
 				}
 			}
 
