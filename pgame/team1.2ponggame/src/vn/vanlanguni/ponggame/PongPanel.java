@@ -169,7 +169,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 					playerTwoScore++;
 					ballDeltaY = 3;
 					// Player 2 Win, restart the game
-					if (playerTwoScore == 30) {
+					if (playerTwoScore == 3) {
 						playing = false;
 						gameOver = true;
 					}
@@ -228,7 +228,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 					playerOneScore++;
 					ballDeltaY = 3;
 					// Player 1 Win, restart the game
-					if (playerOneScore == 30) {
+					if (playerOneScore == 3) {
 						playing = false;
 						gameOver = true;
 					}
