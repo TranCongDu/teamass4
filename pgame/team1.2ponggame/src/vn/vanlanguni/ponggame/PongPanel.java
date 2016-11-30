@@ -315,6 +315,7 @@ Sound.play("Sounds/gameOver.wav");
 		super.paintComponent(g);
 
 		if (showTitleScreen) {
+			Sound.play("Sounds/StartGame.wav");
 			playerOneScore = 0;
 			playerTwoScore = 0;
 			ballDeltaY = 3;
