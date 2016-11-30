@@ -11,9 +11,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 /**
@@ -24,6 +27,7 @@ import javax.swing.JTextField;
 public class MainGameUI extends JFrame {
 	private static final int _HEIGHT = 550;
 	private static final int _WIDTH = 500;
+
 	private PongPanel pongPanel;
 
 	JLabel lblponggame = new JLabel("Pong Game");
@@ -69,6 +73,9 @@ public class MainGameUI extends JFrame {
 		add(lblPlayer2);
 		add(bdongy);
 
+//		if(numberball==1){
+//			g.drawImage(balldep.getImage(), ballX, ballY, diameter, diameter, null);
+//		}
 		lblponggame.setBounds(x + 120, y, w + 200, h + 30);
 		lblponggame.setFont(new Font("Pong Game", Font.BOLD, 36));
 		lblPlayer1.setBounds(x, y + 110, w - 20, h);
@@ -122,6 +129,7 @@ public class MainGameUI extends JFrame {
 					pongPanel.showTitleScreen = false;
 					pongPanel.playing = false;
 					pongPanel.gameOver = true;
+
 				}
 			}
 		};

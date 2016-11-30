@@ -27,9 +27,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.Timer;
 
@@ -41,6 +43,17 @@ import javax.swing.Timer;
 public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	String namePlayer1;
 	String namePlayer2;
+	
+	ImageIcon ballnormal = new ImageIcon(new ImageIcon("image/ballnomarl.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
+	ImageIcon balldep = new ImageIcon("image/balldep.png");
+	ImageIcon ball1 = new ImageIcon(new ImageIcon("image/ball1.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
+	JRadioButton rdb1 = new JRadioButton("Wold Cup 2014");
+	JRadioButton rdb2 = new JRadioButton("Wold Cup 2010");
+	JRadioButton rdb3 = new JRadioButton("Wold Cup 2006");
+	
+	static int numberball = 0;
+
+	
 	private static int kc=0;
 	private static int hieu=0;
 	private static int kc2=0;
@@ -63,7 +76,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	/** The ball: position, diameter */
 	private int ballX = 250;
 	private int ballY = 250;
-	private int diameter = 20;
+	private int diameter = 40;
 	private int ballDeltaX = -1;
 	private int ballDeltaY = 3;
 
@@ -71,13 +84,13 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	private int playerOneX = 0;
 	private int playerOneY = 250;
 	private int playerOneWidth = 10;
-	private int playerOneHeight = 100;
+	private int playerOneHeight = 50;
 
 	/** Player 2's paddle: position and size */
 	private int playerTwoX = 475;
 	private int playerTwoY = 250;
 	private int playerTwoWidth = 10;
-	private int playerTwoHeight = 100;
+	private int playerTwoHeight = 50;
 
 	/** Speed of the paddle - How fast the paddle move. */
 	private int paddleSpeed = 5;
@@ -94,6 +107,9 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	public PongPanel() {
 		setBackground(backgroundColor);
 		Sound.play("Sounds/StartGame.wav");
+		
+		//add combonment
+
 		// listen to key presses
 		setFocusable(true);
 		addKeyListener(this);
@@ -112,7 +128,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	public void step() {
 
 		if (playing) {
-
+			
 			/* Playing mode */
 
 			// move player 1
@@ -243,7 +259,7 @@ Sound.play("Sounds/gameOver.wav");
 					kc2 = playerTwoHeight/5;
 					hieu = nextBallTop+(diameter/2);
 					if(ballDeltaY > 0){
-
+						
 							if ((hieu > playerTwoTop)&&( hieu <= (playerTwoTop+(kc2))) || (hieu > (playerTwoTop+(kc2*4)) && (hieu <playerOneBottom))){
 								ballDeltaY = 5;
 							}
@@ -302,6 +318,45 @@ Sound.play("Sounds/gameOver.wav");
 			playerOneScore = 0;
 			playerTwoScore = 0;
 			ballDeltaY = 3;
+			
+			add(rdb1);
+			add(rdb2);
+			add(rdb3);
+			//button group
+			ButtonGroup btg = new ButtonGroup();
+			btg.add(rdb1);
+			btg.add(rdb2);
+			btg.add(rdb3);
+			//set Location
+			rdb1.setBounds(50, 10, 130, 30);
+			rdb2.setBounds(200, 10, 130, 30);
+			rdb3.setBounds(350, 10, 130, 30);
+			if(rdb1.isSelected()){
+				numberball =0;
+			}
+			else{
+				if(rdb2.isSelected()){
+					numberball=1;
+				}
+				else{
+					if(rdb3.isSelected()){
+						numberball=2;
+					}
+				}
+			}
+			if(numberball==0){
+				g.drawImage(ballnormal.getImage(), ballX, ballY, diameter, diameter, null);
+				
+			}
+			else{ if(numberball == 1){
+					g.drawImage(ball1.getImage(), ballX, ballY, diameter, diameter, null);
+				}
+			else{if(numberball == 2){
+						g.drawImage(balldep.getImage(), ballX, ballY, diameter, diameter, null);
+					}
+				}
+			}
+			
 			/* Show welcome screen */
 		
 			// Draw game title and start message
@@ -317,10 +372,18 @@ Sound.play("Sounds/gameOver.wav");
 			g.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
 
 		} else if (playing) {
-			
+			rdb1.setBounds(0, 0, 0, 0);
+			rdb2.setBounds(0, 0, 0, 0);
+			rdb3.setBounds(0, 0, 0, 0);
 			g.drawImage(background.getImage(), 0, 0, 500, 500, null);
 			/* Game is playing */
-
+			if (numberball == 0) {
+				g.drawImage(ballnormal.getImage(), ballX, ballY, diameter, diameter, null);
+			} else if (numberball == 1) {
+				g.drawImage(balldep.getImage(), ballX, ballY, diameter, diameter, null);
+			} else if (numberball == 2) {
+				g.drawImage(ball1.getImage(), ballX, ballY, diameter, diameter, null);
+			}
 			// set the coordinate limit
 			int playerOneRight = playerOneX + playerOneWidth;
 			int playerTwoLeft = playerTwoX;
@@ -351,9 +414,9 @@ Sound.play("Sounds/gameOver.wav");
 	//		g.drawString(String.valueOf(ballDeltaY), 100, 400); // Player 1
 		
 			
-			// draw the ball
-			g.setColor(Color.RED);
-			g.fillOval(ballX, ballY, diameter, diameter);
+			//draw the ball
+
+
 
 			// draw the paddles
 			g.fillRect(playerOneX, playerOneY, playerOneWidth, playerOneHeight);
